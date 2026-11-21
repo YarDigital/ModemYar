@@ -1,0 +1,16 @@
+{
+  "id": "mock-json",
+  "name": "Mock JSON modem (example profile)",
+  "detect": { "path": "/", "regex": "MockModem Login" },
+  "login": {
+    "request": { "method": "POST", "path": "/api/login", "json": { "username": "{user}", "password": "{pass}" } },
+    "success": { "json_path": "token", "store": "token" },
+    "auth_header": { "Authorization": "Bearer {token}" }
+  },
+  "info": { "request": { "path": "/api/info" }, "map": { "model": "data.model", "firmware": "data.fw", "uptime_s": "data.uptime", "dns": "data.dns" }, "extras": { "CPU": "data.cpu" } },
+  "wifi": { "request": { "path": "/api/wifi" }, "list": "data.networks", "map": { "id": "id", "label": "label", "band": "band", "ssid": "ssid", "enabled": "enabled" } },
+  "wifi_set": { "request": { "method": "POST", "path": "/api/wifi/{id}", "omit_empty": true, "json": { "ssid": "{ssid}", "enabled": "{enabled}", "password": "{password}" } } },
+  "devices": { "request": { "path": "/api/hosts" }, "list": "data.hosts", "map": { "mac": "mac", "ip": "ip", "hostname": "name", "connection": "type", "online": "online", "blocked": "blocked" } },
+  "block": { "request": { "method": "POST", "path": "/api/block", "json": { "mac": "{mac}", "blocked": "{blocked}" } } },
+  "reboot": { "request": { "method": "POST", "path": "/api/reboot" } }
+}

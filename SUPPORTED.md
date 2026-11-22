@@ -7,3 +7,7 @@
 
 How to get your modem added: Settings → "Share modem details to add missing features" and send the text to the developer.
 Legend: ✅ confirmed on a real modem, ⚠️ implemented but not yet confirmed, ❌ not available yet.
+
+## Families waiting for a report / خانواده‌هایی که منتظر گزارش‌اند
+Each family needs one analyzer report from a real modem (use the "Modem request" issue). I do not publish a profile I could not check against real pages.
+- TP-Link (Archer / TD / VX)  · Huawei (HG / EchoLife)  · ZTE (F6xx / H3xx)  · D-Link (DIR / DSL)  · Tenda  · Nokia/Alcatel ONT  · MikroTik  · Netis  · OpenWrt

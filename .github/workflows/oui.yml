@@ -1,0 +1,16 @@
+name: Update oui.json
+on:
+  schedule: [{ cron: '0 3 1 * *' }]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  oui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: curl -fsSL -A "Mozilla/5.0" https://standards-oui.ieee.org/oui/oui.csv -o oui.csv
+      - run: python3 tools/make_oui.py oui.csv oui.json && rm oui.csv
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add oui.json; git diff --cached --quiet || git commit -m "Update oui.json"; git push
